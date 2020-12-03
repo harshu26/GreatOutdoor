@@ -1,0 +1,42 @@
+<h3 class="text-muted">Find Address form</h3>
+<form #data="ngForm" (ngSubmit)="data.valid && findAddressById(data)">
+    <div class="form-group col-md-6">
+        <label>AddressId</label>
+        <input type="text" class="form-control" name="addressId" ngModel #addressIdValueCtrl="ngModel" required>
+        <div *ngIf="addressIdValueCtrl.errors!=null && addressIdValueCtrl.errors.required">
+            AddressId Value is required.
+        </div>
+    </div>
+    <button class="btn btn-success btn-sm" type="submit">Click to find address</button>
+</form>
+
+
+<div id="result" *ngIf="foundStatus==='found'">
+    <div class="alert alert-success">
+    <h3><em>Address Found!!.</em></h3>
+    <p><em>addressId = {{foundAddress.addressId}}</em></p>
+    
+    <p><em>retailerId = {{foundAddress.retailerId}}</em></p>
+    
+   
+    <p><em>buildingNo = {{foundAddress.buildingNo}}</em></p>
+    
+    <p><em>city = {{foundAddress.city}}</em></p>
+    
+    <p><em>state = {{foundAddress.state}}</em></p>
+    
+    <p><em>zip = {{foundAddress.zip}}</em></p>
+    
+    <p><em>field = {{foundAddress.field}}</em></p>
+    
+    </div>
+</div>
+
+
+<div id="result" *ngIf="errMsg !== null">
+    <div class="alert alert-danger">
+    <h3>{{errMsg}}
+    </h3>
+</div>
+</div>
+

@@ -1,0 +1,90 @@
+<h3 class="text-muted">Update Address Form</h3>
+<form #updateForm="ngForm" (ngSubmit)="updateForm.valid && updateAddress(updateForm)">
+    <div class="form-group col-md-6">   
+    <label>AddressId</label>
+     <input type="text" class="form-control" name="addressId" ngModel #addressIdValueCtrl= "ngModel" required>
+     <div *ngIf="addressIdValueCtrl.errors!=null && addressIdValueCtrl.errors.required">
+         AddressId Value is required.
+    </div>
+    </div>
+
+    <div class="form-group col-md-6">
+        <label>RetailerId</label>
+        <input type="text" class="form-control" name="retailerId" ngModel #retailerIdValueCtrl="ngModel" required minlength="2">
+        <div *ngIf="retailerIdValueCtrl.errors!=null && retailerIdValueCtrl.errors.required">
+            RetailerId Value is required.
+        </div>
+        <div *ngIf ="retailerIdValueCtrl.errors!=null && retailerIdValueCtrl.errors.minlength">
+            Min length should be 2
+        </div>
+    </div>
+
+
+    <div class="form-group col-md-6">
+        <label>BuildingNo</label>
+        <input type="text" class="form-control"  name="buildingNo" ngModel #buildingNoValueCtrl="ngModel" required>
+        <div *ngIf="buildingNoValueCtrl.errors!=null && buildingNoValueCtrl.errors.required">
+            Building No. Value is required.
+        </div>
+        <div *ngIf ="buildingNoValueCtrl.errors!=null && buildingNoValueCtrl.errors.minlength">
+            Min length should be 2
+        </div>
+    </div>
+    
+    <div class="form-group col-md-6">
+        <label>City</label>
+        <input type="text" class="form-control"  name="city" ngModel #cityValueCtrl="ngModel" required>
+        <div *ngIf="cityValueCtrl.errors!=null && cityValueCtrl.errors.required">
+            City Value is required.
+        </div>
+        <div *ngIf ="cityValueCtrl.errors!=null && cityValueCtrl.errors.minlength">
+            Min length should be 2
+        </div>
+    </div>
+    
+    <div class="form-group col-md-6">
+        <label>State</label>
+        <input type="text" class="form-control"  name="state" ngModel #stateValueCtrl="ngModel" required>
+        <div *ngIf="stateValueCtrl.errors!=null && stateValueCtrl.errors.required">
+            State Value is required.
+        </div>
+        <div *ngIf ="stateValueCtrl.errors!=null && stateValueCtrl.errors.minlength">
+            Min length should be 2
+        </div>
+    </div>
+    
+    <div class="form-group col-md-6">
+        <label>Zip</label>
+        <input type="text" class="form-control"  name="zip" ngModel #zipValueCtrl="ngModel" required minlength="6">
+        <div *ngIf="zipValueCtrl.errors!=null && zipValueCtrl.errors.required">
+            Zip Value is required.
+        </div>
+        <div *ngIf ="zipValueCtrl.errors!=null && zipValueCtrl.errors.minlength">
+            Min length should be 2
+        </div>
+    </div>
+    
+    <div class="form-group col-md-6">
+        <label>Field</label>
+        <input type="text" class="form-control"  name="field" ngModel #fieldValueCtrl="ngModel" required>
+        <div *ngIf="fieldValueCtrl.errors!=null && fieldValueCtrl.errors.required">
+            Field Value is required.
+        </div>
+        <div *ngIf ="fieldValueCtrl.errors!=null && fieldValueCtrl.errors.minlength">
+            Min length should be 2
+        </div>
+    </div>
+
+    <button class="btn btn-primary btn-sm" type="submit">Update Address</button>
+</form>
+ 
+<div *ngIf="updatedAddress!==null">
+    <div class="alert alert-success">
+        <h3><em>Data Updated!</em></h3>
+        <p><em>Address Successfully Updated.</em></p>
+    </div>
+</div>
+<div *ngIf="errMsg !== null">
+    <h3>{{errMsg}}
+    </h3>
+</div>
